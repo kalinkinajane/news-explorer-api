@@ -45,14 +45,12 @@ module.exports.createUser = (req, res, next) => {
 
 module.exports.loginUser = (req, res, next) => {
   const { email, password } = req.body;
-  console.log(req.body);
   return User.findUserByCredentials(email, password)
     .then((user) => {
       const token = jwt.sign({ _id: user._id }, `${NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret'}`, { expiresIn: '7d' });
       res.send(token);
     })
     .catch((err) => {
-      console.log(err.status);
       if (err.status === 401) {
         next(new Unauthorized('Неправильные почта или пароль'));
       }
