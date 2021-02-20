@@ -31,14 +31,20 @@ module.exports.createArticle = (req, res, next) => {
 };
 
 module.exports.deleteArticle = (req, res, next) => {
-  Article.findByIdAndRemove(req.params.articleId)
-    .then((article) => {
-      if (article === null) {
+  const { articleId } = req.params;
+  Article.findById(articleId)
+    .then((item) => {
+      if (item === null) {
         throw new NotFoundError('Нет карточки с таким id');
-      } else if (req.user._id !== article.owner.toString()) {
+      }
+      if (req.user._id !== item.owner.toString()) {
         throw new ForbiddenError('Невозможно удалить чужую карточку');
       }
-      res.send(article);
+      Article.findByIdAndRemove(articleId)
+        .then((article) => {
+          res.send(article);
+        })
+        .catch(next);
     })
     .catch((err) => {
       if (err.status === 404) {
