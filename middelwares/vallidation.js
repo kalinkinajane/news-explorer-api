@@ -4,7 +4,7 @@ const { regExp } = require('../configs/index');
 
 module.exports.checkCreateUser = celebrate({
   body: Joi.object().keys({
-    name: Joi.string().min(2).max(30),
+    name: Joi.string().min(2).max(30).required(),
     email: Joi.string().required().email(),
     password: Joi.string().required().min(10),
   }),
@@ -27,7 +27,7 @@ module.exports.chackCreateArticle = celebrate({
   }),
 });
 module.exports.checkDeleteArticle = celebrate({
-  body: Joi.object().keys({
+  params: Joi.object().keys({
     articleId: Joi.string().alphanum().length(24),
   }),
 });
