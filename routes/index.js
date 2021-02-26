@@ -13,7 +13,7 @@ router.post('/signin', checkLogin, loginUser);
 router.use('/users', auth, users);
 router.use('/articles', auth, articles);
 
-router.use('*', (req, res, next) => {
-  next(res.status(404).send({ message: 'Запрашиваемый ресурс не найден' }));
+router.use('*', (req, res) => {
+  res.status(404).send({ message: 'Запрашиваемый ресурс не найден' });
 });
 module.exports = router;

@@ -22,18 +22,19 @@ mongoose.connect(`mongodb:${DB_URL}`, {
   useFindAndModify: false,
   useUnifiedTopology: true,
 });
-const allowedCors = [
-  'https://nomoreparties.co/news/v2',
-  'localhost:3000',
-  'https://kalinkinadiplom.students.nomoredomains.rocks',
-];
-app.use(cors({
-  origin: allowedCors,
-}));
+// const allowedCors = [
+//   'https://nomoreparties.co/news/v2',
+//   'localhost:3000',
+//   'https://kalinkinadiplom.students.nomoredomains.rocks',
+// ];
+// app.use(cors({
+//   origin: allowedCors,
+// }));
+app.use(cors());
 app.use(helmet());
-
-app.use(requestLogger);
 app.use(limiter);
+app.use(requestLogger);
+
 app.use('/', routers);
 
 // app.use('*', (req, res) => {
