@@ -15,19 +15,20 @@ const limiter = require('./middelwares/rateLimit');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 const { requestLogger, errorLogger } = require('./middelwares/logger');
-// mongoose.connect('mongodb://localhost:27017/myDiploma', {
-//   useNewUrlParser: true,
-//   useCreateIndex: true,
-//   useFindAndModify: false,
-//   useUnifiedTopology: true,
-// });
+
 mongoose.connect(`mongodb:${DB_URL}`, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useFindAndModify: false,
   useUnifiedTopology: true,
 });
-app.use(cors());
+const allowedCors = [
+  'localhost:3000',
+  'https://kalinkinadiplom.students.nomoredomains.rocks',
+];
+app.use(cors({
+  origin: allowedCors,
+}));
 app.use(helmet());
 
 app.use(requestLogger);
