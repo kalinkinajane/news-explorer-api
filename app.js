@@ -23,6 +23,7 @@ mongoose.connect(`mongodb:${DB_URL}`, {
   useUnifiedTopology: true,
 });
 const allowedCors = [
+  'https://nomoreparties.co/news/v2',
   'localhost:3000',
   'https://kalinkinadiplom.students.nomoredomains.rocks',
 ];
