@@ -6,10 +6,7 @@ const ForbiddenError = require('../error/ForbiddenError');
 module.exports.getArticles = (req, res, next) => {
   Article.find()
     .then((article) => {
-      if (req.user._id === article.owner) {
-        res.send(article);
-      }
-      next(new BadRequestError('Нет сохраненных новостей'));
+      res.send(article);
     })
     .catch(next);
 };
