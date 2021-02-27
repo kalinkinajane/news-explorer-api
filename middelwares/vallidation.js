@@ -12,7 +12,7 @@ module.exports.checkCreateUser = celebrate({
 module.exports.checkLogin = celebrate({
   body: Joi.object().keys({
     email: Joi.string().email().required(),
-    password: Joi.string().required().min(10),
+    password: Joi.string().required().min(8),
   }),
 });
 module.exports.chackCreateArticle = celebrate({
