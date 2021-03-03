@@ -3,8 +3,8 @@
  https://178.154.255.143
 
 Домены: 
- https://kalinkinadiplom.students.nomoredomains.rocks
-https://api.kalinkinadiplom.students.nomoredomains.rocks
+ https://diplomakalinkina.students.nomoredomains.rocks
+https://api.diplomakalinkina.students.nomoredomains.rocks
 
 Описание: Сервер для проекта News-explorer. Функционал сервера:
 1. Регистрация и авторизация пользователей.
