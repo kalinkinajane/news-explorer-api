@@ -3,7 +3,7 @@
 https://178.154.255.143
 
 Домены:
-https://kalinkinadiplom.students.nomoredomains.rocks
+https://diplomakalinkina.students.nomoredomains.rocks
 https://api.kalinkinadiplom.students.nomoredomains.rocks
 
 Описание: 
